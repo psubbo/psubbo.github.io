@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+body {
+    margin: 0px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: #0076b4;
+}
+
+h1,
+h2 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-style: italic;
+    color: white
+}
+
+p {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+ul li {
+    list-style: none;
+}
+
+h2 {
+    color: #0076b4;
+}
+
+.logo {
+    width: 300px;
+}
+
+nav {
+    width: 100%;
+    display: flex;
+}
+
+nav li {
+    margin: 0px;
+    width: 20%;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+nav li:hover {
+    background-color: #0076b4;
+    color: white;
+}
+
+nav li a:hover {
+    color: white;
+}
+
+nav li a {
+    box-sizing: border-box;
+    margin: 0px;
+    display: block;
+    padding: 20px 40px;
+    font-family: 'Roboto Condenced';
+    text-transform: capitalize;
+    text-decoration-line: none;
+    color: #0076b4
+}
+
+main {
+    height: 100%;
+    width: 100%;
+}
+
+aside {
+    height: 100%;
+    width: 480px;
+}
+
+aside ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+aside li {
+    display: flex;
+}
+
+aside li img {
+    width: 70px;
+}
+
+aside p:first-child {
+    color: #0076b4;
+    font-size: 20px;
+}
+
+.asideItem {
+    height: 100px;
+}
+
+footer {
+    height: 100px;
+}
+
+.container {
+    display: flex;
+}
+
+@media only screen and (max-width:700px) {
+    header {
+        flex-direction: column;
+    }
+    nav {
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: stretch;
+    }
+    nav li {
+        display: flex;
+        width: 100%;
+    }
+    nav li a {
+        width: 100%;
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+    nav li:hover {
+        background-color: #0076b4;
+        color: white;
+    }
+    main img {
+        width: 375px;
+        height: 375px;
+    }
+}
