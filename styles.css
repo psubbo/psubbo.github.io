@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 @font-face {
-    font-family: Yandex Sans Text Web;
+    font-family: 'Yandex Sans Text Web';
     font-weight: 400;
     font-style: normal;
     font-stretch: normal;
@@ -9,7 +9,7 @@
 
 body {
     background: #e7e6e8;
-    font-family: Arial, sans-serif;
+    font-family: 'Yandex Sans Text Web', sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -18,6 +18,8 @@ body {
 /* Шапка с меню */
 
 .headerMain {
+    position: relative;
+    z-index: 10;
     display: flex;
     height: 59px;
     background-color: white;
@@ -28,8 +30,7 @@ nav {
     align-items: center
 }
 
-nav a,
-nav span {
+nav a {
     display: block;
     font-size: 16px;
     color: #000;
@@ -42,6 +43,9 @@ nav a:hover,
     color: #c00;
 }
 
+
+/* Тут Яндекс скриптом отмечает какая вкладка открыта. Для примера сделал просто через :nth-child(2) */
+
 nav a:nth-child(2) {
     opacity: .6;
 }
@@ -49,6 +53,27 @@ nav a:nth-child(2) {
 .navDropdown {
     padding-right: 15px;
     cursor: pointer;
+}
+
+
+/* ГРЕБАНЫЙ ТРЕУГОЛЬНИК СОЖРАЛ ПОЛЖИЗНИ ПРОСТО !!!*/
+
+
+/* Я так ине понял как его крутить видимо через  */
+
+.navDropdown::after {
+    z-index: 2;
+    position: absolute;
+    margin-left: 5px;
+    margin-top: 8px;
+    display: inline-block;
+    content: "";
+    vertical-align: top;
+    width: 12px;
+    height: 6px;
+    background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAxMiAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Zz48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNGRkYiIGQ9Ik0xMSAyTDYgNyAxIDIiLz48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiMwMDAiIGQ9Ik0xMSAxN2wtNSA1LTUtNSIvPjwvZz48L3N2Zz4K) 50% -17px no-repeat;
+    background-size: 12px 24px;
+    transition: -webkit-transform .1s ease-in;
 }
 
 nav a {
@@ -79,7 +104,7 @@ nav a {
 }
 
 
-/* Блок всегда рядом */
+/* Блок "Всегда рядом" */
 
 main {
     padding: 0 0 245px;
@@ -94,8 +119,11 @@ main {
 
 .text {
     margin: 0 auto;
-    font-family: 'Yandex Sans Text Web', Arial, sans-serif;
     background-color: transparent;
+}
+
+.text h2 {
+    font-family: 'Yandex Sans Text Web', sans-serif;
 }
 
 .introHeader {
@@ -129,3 +157,146 @@ video {
     width: 1130px;
     height: 968px;
 }
+
+
+/* Блок "Математическая точность" */
+
+.matemat {
+    padding: 70px 0;
+    background-color: #dedede;
+}
+
+.matemat h2 {
+    text-align: center;
+    font-weight: 600;
+    font-size: 42px;
+    line-height: 50px;
+    margin: 0 0 25px;
+}
+
+.figuresMat {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+
+figure {
+    width: 327px;
+    height: 314px;
+}
+
+figure img {
+    width: 100%;
+    height: 240px;
+}
+
+figcaption {
+    width: 230px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+/* Секция "99 рублей" */
+
+.cena {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.cenaText {
+    text-align: left;
+    width: 50%;
+    order: 2;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cenaHeader {
+    margin: 0 0 25px;
+    font-weight: 700;
+    font-size: 42px;
+    line-height: 50px;
+    font-family: 'Yandex Sans Text Web', sans-serif;
+}
+
+.cenaBody {
+    font-size: 16px;
+    line-height: 25px;
+    color: #1a1a1a;
+    margin: 0 0 20px;
+    padding: 0;
+}
+
+.cenaFooter a {
+    text-decoration: none;
+    color: #04b;
+    cursor: pointer;
+}
+
+.cenaFooter a:hover {
+    color: #c00;
+}
+
+.cenaFooter svg {
+    display: inline-block;
+    vertical-align: middle;
+    fill: currentcolor;
+    height: 12px;
+    width: 12px;
+}
+
+.cena article {
+    padding: 30px;
+    max-width: 505px;
+    margin: auto;
+    text-align: left;
+}
+
+.cenaVideo {
+    z-index: -2;
+    background: #eae9ea;
+    height: 735px;
+    width: 50%;
+    order: 1;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+}
+
+.videoContainer {
+    position: relative;
+    z-index: -1;
+}
+
+.videoContainer video {
+    z-index: -1;
+    width: 610px;
+    height: 537px;
+}
+
+.bubble {
+    z-index: 2;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    box-sizing: border-box;
+    background: url(https://yastatic.net/taxi-frontend/0.0.250/build/a95836216a35faf698f8e17bec238d2e.png) no-repeat 50% 50% transparent;
+}
+
+.bubbleText {
+    font-size: 14px;
+    transform: skewY(29deg);
+    text-align: center;
+    transform-style: preserve-3d;
+    font-family: Yandex Sans Text Web, Arial, sans-serif;
+}
+
+
+/* Секция «Платите как удобно» */
