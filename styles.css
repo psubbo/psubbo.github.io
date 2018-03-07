@@ -10,12 +10,6 @@ header {
     background: #0076b4;
 }
 
-header img,
-header h1 {
-    margin-left: 40px;
-    display: inline-block;
-}
-
 h1,
 h2 {
     font-family: 'Roboto Condensed', sans-serif;
