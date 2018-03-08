@@ -15,16 +15,16 @@ body {
     font-family: 'Yandex Sans Text Web', sans-serif;
     margin: 0;
     padding: 0;
+    z-index: 0;
 }
 
 
 /* Шапка с меню */
 
 .headerMain {
-    position: relative;
     z-index: 10;
     display: flex;
-    height: 59px;
+    height: 100%;
     background-color: white;
 }
 
@@ -33,7 +33,9 @@ nav {
     align-items: center
 }
 
-nav a {
+.headerMain a {
+    margin-top: 16.5px;
+    margin-bottom: 16.5px;
     display: block;
     font-size: 16px;
     color: #000;
@@ -59,10 +61,10 @@ nav a:nth-child(2) {
 }
 
 
-/* ГРЕБАНЫЙ ТРЕУГОЛЬНИК СОЖРАЛ ПОЛЖИЗНИ ПРОСТО !!!*/
+/* ГРЕБАНЫЙ ТРЕУГОЛЬНИК СОЖРАЛ МОИ НЕРВЫ!!! */
 
 
-/* Я так ине понял как его крутить видимо через  */
+/* Я так ине понял как его крутить видимо через rotate или JS  */
 
 .navDropdown::after {
     z-index: 2;
@@ -115,7 +117,7 @@ main {
 
 .vsegdaRyadom {
     background: #e7e6e8;
-    z-index: -1;
+    z-index: 1;
     position: relative;
     padding: 80px 69px;
     min-height: 600px;
@@ -124,6 +126,7 @@ main {
 .text {
     margin: 0 auto;
     background-color: transparent;
+    z-index: -1;
 }
 
 .text h2 {
@@ -154,11 +157,11 @@ main {
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    z-index: -1;
+    z-index: -2;
     overflow: hidden;
 }
 
-video.introVideo {
+.introVideo {
     width: 1130px;
     height: 968px;
 }
@@ -192,7 +195,8 @@ figure {
 
 figure img {
     width: 100%;
-    height: 240px;
+    max-width: 327px;
+    width: 100%;
 }
 
 figcaption {
@@ -267,7 +271,6 @@ figcaption {
 .cenaVideo {
     z-index: -2;
     background: #eae9ea;
-    height: 735px;
     width: 50%;
     order: 1;
     display: flex;
@@ -278,12 +281,16 @@ figcaption {
 .videoContainer {
     position: relative;
     z-index: -1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
 }
 
 .videoContainer video {
     z-index: -1;
-    width: 610px;
-    height: 537px;
+    width: 100%;
+    height: 100%;
 }
 
 .bubble {
@@ -343,14 +350,10 @@ figcaption {
     margin: 0 0 35px;
 }
 
-
-/* Вот это не срабатывало, пришлось inline прописать */
-
-
-/* video.platiteVideo {
-    width: 735px;
-    height: 735px;
-} */
+.platiteVideo {
+    width: 50%;
+    height: 100%;
+}
 
 
 /* Секция «Скачайте приложение» */
@@ -422,6 +425,10 @@ button {
     height: 100%;
     display: block;
     opacity: .5;
+}
+
+.button2 {
+    display: none;
 }
 
 
@@ -516,4 +523,106 @@ button {
 .copyright {
     font-size: 13px;
     line-height: 22px;
+}
+
+@media screen and (max-width: 1000px) {
+    .headerMain {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 30px;
+    }
+    .headerLogo {
+        padding: 0;
+    }
+    .navDropdown {
+        padding-right: 0px;
+    }
+    .headerMiddle {
+        width: 100%;
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    .vsegdaRyadom {
+        padding: 50px 20px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        background: #e7e6e8;
+        min-height: 0;
+    }
+    .introHeader {
+        font-size: 50px;
+        line-height: 56px;
+        /* margin: 0 0 20px; */
+    }
+    .video {
+        background: #e7e6e8;
+    }
+    .introVideo {
+        width: 100%;
+        height: 100%;
+        background: #e7e6e8 !important;
+        border: 0px;
+    }
+    .matemat h2 {
+        font-size: 32px;
+    }
+    .figuresMat {
+        display: flex;
+        flex-direction: column;
+        align-items: center
+    }
+    .cena {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .videoContainer {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        align-content: center;
+        width: 100%
+    }
+    .cenaVideo {
+        width: 100%;
+    }
+    .cenaText {
+        width: 100%;
+        order: 1;
+    }
+    .platiteText h2,
+    .platiteText p {
+        width: 100%
+    }
+    .platiteContainer {
+        flex-direction: column;
+    }
+    .platiteVideo {
+        width: 100%;
+    }
+    .app {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .app p,
+    .form input {
+        display: none;
+    }
+    .button2 {
+        box-sizing: content-box;
+        display: block;
+        padding: 15px 20px;
+        text-align: center;
+    }
+    .button {
+        display: none;
+    }
+    .form {
+        margin: 0;
+    }
 }

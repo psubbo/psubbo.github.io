@@ -10,6 +10,15 @@ header {
     background: #0076b4;
 }
 
+@media screen and (max-width: 600px) {
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+}
+
 h1,
 h2 {
     font-family: 'Roboto Condensed', sans-serif;
@@ -36,6 +45,7 @@ h2 {
 nav {
     width: 100%;
     display: flex;
+    justify-content: flex-start;
 }
 
 nav li {
@@ -55,12 +65,14 @@ nav li a:hover {
 }
 
 nav li a {
+    text-transform: uppercase;
     box-sizing: border-box;
     margin: 0px;
     display: block;
     padding: 20px 40px;
-    font-family: 'Roboto Condenced';
-    text-transform: capitalize;
+    font-family: 'Roboto Condenced' sans-serif;
+    font-weight: 600;
+    /*  font-style: italic; */
     text-decoration-line: none;
     color: #0076b4
 }
