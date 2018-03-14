@@ -49,11 +49,7 @@
             } else if (login === "admin" && password === "qwerty123456") {
                 alert("Добро пожаловать, администратор!");
             } else {
-                if (login !== "admin") {
-                    alert("Неверный логин!");
-                } else {
-                    alert("Неверный пароль!");
-                }
+                login !== "admin" ? alert('Неверный логин') : alert("Неверный пароль!");
             }
         }
     </script>
