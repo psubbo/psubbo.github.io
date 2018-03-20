@@ -35,12 +35,15 @@
         }
     </style>
     <script>
-        var login = "";
-        var password = "";
+        var login = localStorage.login;
+        var password = localStorage.password;
 
         function btnPressed() {
             login = document.auth.login.value;
             password = document.auth.password.value;
+
+            localStorage.login = login;
+            localStorage.password = password;
 
             if (login === "") {
                 alert("Логин должен быть указан!");
