@@ -1,3 +1,21 @@
+//ЗАДАНИЕ 1 - ВИСОКОСНЫЙ ГОД!
+var isLeapYear = function(y) {
+    return y % 4 === 0 && y % 100 !== 0 || y % 400 === 0;
+};
+
+var logAllLeapYears = function(a, b) {
+    var i = a;
+    while (i <= b) {
+        if (isLeapYear(i)) console.log(i);
+        i++;
+    };
+};
+
+logAllLeapYears(1900, 2000);
+
+//ЗАДАНИЕ 2 - TO DO App
+
+
 var list = document.querySelector('.list');
 var listItem = document.createElement('li');
 
