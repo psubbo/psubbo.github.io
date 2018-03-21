@@ -11,7 +11,7 @@ var logAllLeapYears = function(a, b) {
     };
 };
 
-/* logAllLeapYears(1900, 2000); */
+logAllLeapYears(1900, 2000);
 
 //ЗАДАНИЕ 2 - TO DO App
 
