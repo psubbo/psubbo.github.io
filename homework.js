@@ -11,35 +11,45 @@ var logAllLeapYears = function(a, b) {
     };
 };
 
-logAllLeapYears(1900, 2000);
+/* logAllLeapYears(1900, 2000); */
 
 //ЗАДАНИЕ 2 - TO DO App
 
-
 var list = document.querySelector('.list');
 var listItem = document.createElement('li');
-
-listItem.textContent = 'Адын!!!111';
-list.appendChild(listItem);
-
-var citiesArr = ['Moscow', 'London', 'Chicago'];
-
-for (var i = 0; i < citiesArr.length; i++) {
-    var listItem = document.createElement('li');
-    listItem.textContent = citiesArr[i];
-    list.appendChild(listItem);
+var btn = document.querySelector('.add');
+var li = document.querySelector('li');
+var done = document.querySelector('.done');
+var tasksArr = new Array();
+var oldTasks = localStorage.getItem('tasksArr');
+if (oldTasks !== null) {
+    tasksArr = oldTasks.split(',');
+    for (var i = 0; i < tasksArr.length; i++) {
+        var listItem = document.createElement('li');
+        listItem.textContent = tasksArr[i];
+        list.appendChild(listItem);
+    };
+} else {
+    tasksArr = [];
 };
 
 
 var btn = document.querySelector('.add');
-
+var done = document.querySelector('.done');
 btn.addEventListener('click', function() {
-    var newCity = prompt("Введите новый город");
-    var listItem = document.createElement('li');
-    listItem.textContent = newCity;
-    list.appendChild(listItem);
+    var newTask = prompt("Введите новую задачу");
+    if (newTask != "" && newTask !== null) {
+        var listItem = document.createElement('li');
+        listItem.textContent = newTask;
+        tasksArr.push(newTask);
+        localStorage.setItem('tasksArr', tasksArr);
+        list.appendChild(listItem);
+    }
+
 });
 
-document.querySelector('.highlight').addEventListener('click', function() {
-    document.querySelector('.list').style.fontSize = '24px';
+list.addEventListener('click', function(event) {
+    if (event.target.tagName == 'LI') {
+        event.target.classList.toggle("done");
+    }
 });
