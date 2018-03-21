@@ -18,8 +18,6 @@ logAllLeapYears(1900, 2000);
 var list = document.querySelector('.list');
 var listItem = document.createElement('li');
 var btn = document.querySelector('.add');
-var li = document.querySelector('li');
-var done = document.querySelector('.done');
 var tasksArr = new Array();
 var oldTasks = localStorage.getItem('tasksArr');
 if (oldTasks !== null) {
@@ -32,7 +30,6 @@ if (oldTasks !== null) {
 } else {
     tasksArr = [];
 };
-
 
 var btn = document.querySelector('.add');
 var done = document.querySelector('.done');
