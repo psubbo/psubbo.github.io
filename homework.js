@@ -18,7 +18,7 @@ logAllLeapYears(1900, 2000);
 var list = document.querySelector('.list');
 var listItem = document.createElement('li');
 var btn = document.querySelector('.add');
-var tasksArr = new Array();
+var tasksArr;
 var oldTasks = localStorage.getItem('tasksArr');
 if (oldTasks !== null) {
     tasksArr = oldTasks.split(',');
