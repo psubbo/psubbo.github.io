@@ -6,34 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
-
-    <title>Login form</title>
-    <style>
-        body {
-            box-sizing: border-box;
-            height: 100%;
-            background-image: url(img/hypnotize.png);
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-        }
-        
-        .form form {
-            width: 300px;
-            margin: 0 auto;
-            padding-top: 20px;
-        }
-        
-        .formArea {
-            box-shadow: 2px 4px 10px hsla(0, 0%, 0%, 0.6);
-            border-radius: 5px;
-            background-color: white;
-            width: 450px;
-            height: 200px;
-            margin: 100px auto;
-            padding: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://www.decathlon.ru/ecru/static/footer/img/logo_de.png" sizes="40x40" type="image/png" rel="icon">
+    <title>Tracking app - Login</title>
     <script>
         var login = localStorage.login;
         var password = localStorage.password;
@@ -51,6 +26,7 @@
                 alert("Пароль должен быть указан!");
             } else if (login === "admin" && password === "qwerty123456") {
                 alert("Добро пожаловать, администратор!");
+                window.location.assign("https://www.w3schools.com");
             } else {
                 login !== "admin" ? alert('Неверный логин') : alert("Неверный пароль!");
             }
@@ -59,7 +35,13 @@
 </head>
 
 <body>
-    <div class="formArea">
+    <header>
+        <div class="logo">
+            <img src="img/Decathlon_Logo.png" alt="Decathlon" width="150px">
+            <p>Tracking App</p>
+        </div>
+    </header>
+    <div class="formArea loginForm">
         <div class="form">
             <form action="#" class="form-horizontal" name="auth" role="form" method="GET">
                 <div class="form-group">

@@ -1,10 +1,56 @@
 body {
     box-sizing: border-box;
     height: 100%;
-    background-image: url(img/hypnotize.png);
+    background-image: url(../img/hypnotize.png);
     display: flex;
     align-items: center;
     justify-content: space-around;
+}
+
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.logo p {
+    margin: 0 20px 0 20px;
+    color: #0198f1;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    font-size: 32px;
+    text-transform: uppercase;
+}
+
+
+/* nav ul {
+    display: flex;
+    margin-bottom: 0px;
+}
+
+nav li {
+    margin-right: 20px;
+    list-style: none;
+   
+    display: block;
+} */
+
+nav a {
+    text-transform: uppercase;
+    color: #004d99;
+}
+
+nav a:hover {
+    color: #0d6ac7;
+}
+
+main {
+    width: 100%;
+    height: 800px;
+    margin-top: 86px;
+    background-color: #f2f2f2;
 }
 
 .form form {
@@ -13,12 +59,36 @@ body {
     padding-top: 20px;
 }
 
-.formArea {
+.loginForm {
     box-shadow: 2px 4px 10px hsla(0, 0%, 0%, 0.6);
     border-radius: 5px;
     background-color: white;
     width: 450px;
     height: 200px;
-    margin: 100px auto;
+    margin: 200px auto;
     padding: 20px;
+}
+
+.calendarForm,
+.trackingForm {
+    margin-left: 70px;
+}
+
+.calendarForm form,
+.trackingForm form {
+    margin-top: 20px;
+}
+
+.calendarForm .form-group,
+.trackingForm .form-group {
+    margin-right: 20px;
+}
+
+.calendarForm input,
+.trackingForm .input-group {
+    width: 250px;
+}
+
+.resultTable {
+    margin: 70px;
 }

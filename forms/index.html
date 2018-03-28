@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Формы</title>
+
+    <!-- CSS -->
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,500&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- JS -->
+    <script src="js/utils.js"></script>
+    <script src="js/scripts.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="text-center">
+            <a href="https://yandex.ru" target="_blank" class="ya-link">Форма</a>
+        </h2>
+
+        <div class="row ">
+            <div class="col-xs-4 col-xs-offset-4">
+
+                <form action="https://yandex.ru" class="my-form">
+
+                    <!-- Имя -->
+                    <div class="form-group" method="get">
+                        <label>Имя или псевдоним</label>
+                        <input type="text" name="name" class="required form-control form-name" placeholder="В. Пупкин">
+                    </div>
+
+                    <!-- Эл. почта -->
+                    <div class="form-group">
+                        <label>Электронная почта</label>
+                        <input type="text" name="email" class="required form-control form-email" placeholder="poopkin@gmail.com">
+                    </div>
+
+                    <!-- Оценка -->
+                    <div class="form-group">
+                        <label>Оценка</label>
+                        <select class="form-control form-rating">
+                        <option value="1">★</option>
+                        <option value="2">★★</option>
+                        <option value="3">★★★</option>
+                        <option value="4">★★★★</option>
+                        <option value="5" selected>★★★★★</option>
+                    </select>
+                    </div>
+
+                    <!-- Комментарий -->
+                    <div class="form-group">
+                        <label>Комментарий</label>
+                        <textarea class="form-control form-comment" rows="3" placeholder="Что вы думаете о нашей продукции?"></textarea>
+                    </div>
+
+                    <!-- Чекбокс -->
+                    <div class="form-group checkbox">
+                        <label>
+                    <input type="checkbox" class="form-agreement">
+                    Я на всё согласен
+                  </label>
+                    </div>
+
+                    <!-- Кнопка «Отправить» -->
+                    <div class="form-submit text-center">
+                        <button type="submit" class="btn btn-primary">Отправить</button>
+                    </div>
+                </form>
+
+                <p class="form-message">
+                    <!-- Здесь будет текст ошибки или успеха -->
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+</body>
