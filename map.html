@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript">
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/style.css">
     <link href="https://www.decathlon.ru/ecru/static/footer/img/logo_de.png" sizes="40x40" type="image/png" rel="icon">
@@ -27,7 +29,29 @@
 
     </header>
     <main>
+        <div class="resultTable">
+            <h1>Карта с заказами:</h1>
 
+            <div id="map" style="width: 800px; height: 600px"></div>
+            <script type="text/javascript">
+                ymaps.ready(init);
+                var myMap,
+                    myPlacemark;
+
+                function init() {
+                    myMap = new ymaps.Map("map", {
+                        center: [55.913021, 37.577787],
+                        zoom: 10
+                    });
+
+                    myPlacemark1 = new ymaps.Placemark([55.913021, 37.577787], {
+                        hintContent: 'Декатлон Алтуфьево',
+                        balloonContent: 'Декатлон Алтуфьево'
+                    });
+                    myMap.geoObjects.add(myPlacemark1);
+                }
+            </script>
+        </div>
     </main>
 </body>
 

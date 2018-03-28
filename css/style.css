@@ -75,7 +75,9 @@ main {
 }
 
 .calendarForm form,
-.trackingForm form {
+.trackingForm form,
+.statusLog,
+.statusLog table {
     margin-top: 20px;
 }
 
@@ -91,4 +93,8 @@ main {
 
 .resultTable {
     margin: 70px;
+}
+
+#map {
+    margin: 40px auto;
 }
