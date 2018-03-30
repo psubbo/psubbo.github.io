@@ -8,30 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/style.css">
     <link href="https://www.decathlon.ru/ecru/static/footer/img/logo_de.png" sizes="40x40" type="image/png" rel="icon">
+    <script src="js/auth.js" defer></script>
     <title>Tracking app - Login</title>
-    <script>
-        var login = localStorage.login;
-        var password = localStorage.password;
-
-        function btnPressed() {
-            login = document.auth.login.value;
-            password = document.auth.password.value;
-
-            localStorage.login = login;
-            localStorage.password = password;
-
-            if (login === "") {
-                alert("Логин должен быть указан!");
-            } else if (password === "") {
-                alert("Пароль должен быть указан!");
-            } else if (login === "admin" && password === "qwerty123456") {
-                alert("Добро пожаловать, администратор!");
-                window.location.assign("https://www.w3schools.com");
-            } else {
-                login !== "admin" ? alert('Неверный логин') : alert("Неверный пароль!");
-            }
-        }
-    </script>
 </head>
 
 <body>
@@ -47,26 +25,28 @@
                 <div class="form-group">
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-2 control-label">Логин</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-10 loginInput">
                             <input autofocus type="text" class="form-control" placeholder="введите логин" name="login">
 
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputPassword3" class="col-sm-2 control-label">Пароль</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-10 passwordInput">
                             <input type="password" class="form-control" placeholder="введите пароль" name="password">
                         </div>
 
                     </div>
+                    <p class="formMessage"></p>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-default btn-sm" onClick="btnPressed();">Войти</button>
+                            <button type="submit" class="btn btn-default btn-sm" onClick="">Войти</button>
                         </div>
                     </div>
             </form>
             </div>
         </div>
+
 </body>
 
 </html>

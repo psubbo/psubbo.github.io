@@ -5,8 +5,7 @@ form.addEventListener('submit', function(ev) { // добавляем обраб�
 
     var formName = document.querySelector('.form-name'); // находим на странице поле «Имя» и сохраняем ссылку на него в переменную formName
     var formEmail = document.querySelector('.form-email'); // находим на странице поле «Эл. почта» и сохраняем ссылку на него в переменную formName
-    var formAgreement = document.querySelector('.form-agreement'); // находим на странице галочку «Я на все согласен» и сохраняем ссылку на него в переменную formName
-    var formMessage = document.querySelector('.form-message');
+
 
     // if (!formName.value) // отсутствие значения в поле «имя»
     // if (formName.value === '') // сравнить с пустой строкой
