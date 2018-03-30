@@ -26,7 +26,7 @@ form.addEventListener('submit', function(ev) {
         var authData = login + ":" + password;
         bstring = btoa(authData);
 
-        localStorage.bstring = bstring;
+        sessionStorage.bstring = bstring;
 
         var params = {
             method: 'POST',
