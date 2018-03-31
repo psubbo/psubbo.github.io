@@ -30,7 +30,6 @@ fetch(apiUrl)
                        <td>${row[4]}</td>
                      </tr>
                    `;
-                    debugger;
                 }
 
             });
