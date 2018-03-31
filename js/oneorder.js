@@ -17,7 +17,7 @@ var resultTable = document.querySelector('.resultTable');
 form.addEventListener('submit', function(ev) {
     ev.preventDefault();
     var order = document.searchForm.search.value;
-    console.log(order);
+
     fetch(apiUrl)
         .then(
             function(response) {
@@ -57,6 +57,7 @@ form.addEventListener('submit', function(ev) {
                             xhr.setRequestHeader("Content-Type", "application/json");
                             xhr.setRequestHeader("Authorization", authHeader);
                             xhr.send(data);
+
                             custName.innerHTML = row[3];
                             orderDate.innerHTML = row[2];
                             for (var i = 0; i < statuses.length; i++) {
