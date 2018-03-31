@@ -70,7 +70,11 @@ form.addEventListener('submit', function(ev) {
                     } else {
 
                         // Если все хорошо - переходим в админку
-
+                        loginInput.classList.remove('has-error');
+                        passwordInput.classList.remove('has-error');
+                        formMessage.innerHTML = 'Авторизация успешна';
+                        formMessage.classList.remove('form-message-error');
+                        formMessage.classList.add('form-message-success');
                         window.location.assign("https://psubbo.github.io/dashboard.html");
                     }
 
