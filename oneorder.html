@@ -30,7 +30,7 @@
     <main>
         <div class="trackingForm">
             <h1>Введите номер заказа для отслеживания:</h1>
-            <form name="searchForm" action="#">
+            <form name="searchForm" class="searchForm" action="#">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="RUS*******" name="search">
                     <div class="input-group-btn">
@@ -46,8 +46,8 @@
                 <div class="status"></div>
                 <p>Имя клиента: </p>
                 <div class="custName"></div>
-                <p>Детали заказа: </p>
-                <div class="orderDetails"></div>
+                <p>Дата заказа: </p>
+                <div class="orderDate"></div>
             </div>
             <div class="statusLog">
                 <h3>История статусов:</h3>
@@ -59,22 +59,8 @@
                             <th>Дата</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                    <tbody class="tbody">
+
                     </tbody>
                 </table>
             </div>

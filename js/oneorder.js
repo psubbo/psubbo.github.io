@@ -5,13 +5,24 @@ var range = "A2:E";
 var tbody = document.querySelector(".tbody");
 var apiUrl = "https://sheets.googleapis.com/v4/spreadsheets/" + spreadsheetID + "/values/" + range + "?key=" + API_KEY;
 var bstring = sessionStorage.bstring;
-var form = document.getElementsByTagName('form');
+var form = document.querySelector('.searchForm');
+var tbody = document.querySelector(".tbody");
+var status = document.querySelector('.status');
+var custName = document.querySelector('.custName');
+var orderDate = document.querySelector('.orderDate');
+
+
+
+
+
+
 
 form.addEventListener('submit', function(ev) {
     ev.preventDefault();
-    var order = document.searchForm.search.value;
-
+    var order = document.form.search.value;
+    console.log(order);
     debugger;
+
 
     fetch(apiUrl)
         .then(
@@ -28,31 +39,46 @@ form.addEventListener('submit', function(ev) {
                         var row = a.values[i];
                         var orderNumber = row[0];
                         var trackCode = row[1];
-                        var shippingDate = row[2];
-                        var custName = row[3];
-                        var deliveryCity = row[4];
                         var statusString;
                         var data = "{\r\n\t\"parcelBarCodes\":[" + trackCode + "],\r\n}";
+                        if (order == orderNumber) {
+
+                            var xhr = new XMLHttpRequest();
+
+                            xhr.addEventListener("readystatechange", function() {
+                                if (this.readyState === 4) {
+                                    var status = JSON.parse(this.responseText);
+                                    statusString = status.GetStatusesByParcelBarcodesResult[0].StatusName
+                                    var statuses = status.GetStatusesByParcelBarcodesResult
+
+                                    debugger;
+                                }
+                            });
+                            var authHeader = "Basic " + bstring;
+                            xhr.open("POST", "https://api.hermes-dpd.ru/ws/restservice.svc/rest/GetStatusesByParcelBarcodes", false);
+                            xhr.setRequestHeader("Content-Type", "application/json");
+                            xhr.setRequestHeader("Authorization", authHeader);
+                            xhr.send(data);
+                            status.innerHTML = statusString
+                            custName.innerHTML = row[3];
+                            orderDate.innerHTML = row[2];
+                            for (var i = 0; i < statuses.values.length; i++) {
 
 
 
 
 
-                        var xhr = new XMLHttpRequest();
-
-                        xhr.addEventListener("readystatechange", function() {
-                            if (this.readyState === 4) {
-                                var status = JSON.parse(this.responseText);
-                                statusString = status.GetStatusesByParcelBarcodesResult[0].StatusName
                             }
-                        });
-                        var authHeader = "Basic " + bstring;
-                        xhr.open("POST", "https://api.hermes-dpd.ru/ws/restservice.svc/rest/GetStatusesByParcelBarcodes", false);
-                        xhr.setRequestHeader("Content-Type", "application/json");
-                        xhr.setRequestHeader("Authorization", authHeader);
-                        xhr.send(data);
+
+
+                            break;
+                        } else {
+                            continue;
+                        }
 
                     }
+
+
 
                 });
             }
