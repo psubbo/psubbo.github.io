@@ -7,19 +7,17 @@ var apiUrl = "https://sheets.googleapis.com/v4/spreadsheets/" + spreadsheetID + 
 var bstring = sessionStorage.bstring;
 var form = document.querySelector('.searchForm');
 var tbody = document.querySelector(".tbody");
-var status = document.querySelector('.status');
+var orderStatus = document.querySelector('.orderStatus');
 var custName = document.querySelector('.custName');
 var orderDate = document.querySelector('.orderDate');
 
 
 
+
 form.addEventListener('submit', function(ev) {
     ev.preventDefault();
-    var order = document.form.search.value;
+    var order = document.searchForm.search.value;
     console.log(order);
-    debugger;
-
-
     fetch(apiUrl)
         .then(
             function(response) {
@@ -36,6 +34,7 @@ form.addEventListener('submit', function(ev) {
                         var orderNumber = row[0];
                         var trackCode = row[1];
                         var statusString;
+                        var statuses;
                         var data = "{\r\n\t\"parcelBarCodes\":[" + trackCode + "],\r\n}";
                         if (order == orderNumber) {
 
@@ -44,10 +43,11 @@ form.addEventListener('submit', function(ev) {
                             xhr.addEventListener("readystatechange", function() {
                                 if (this.readyState === 4) {
                                     var status = JSON.parse(this.responseText);
-                                    statusString = status.GetStatusesByParcelBarcodesResult[0].StatusName
-                                    var statuses = status.GetStatusesByParcelBarcodesResult
+                                    statusString = status.GetStatusesByParcelBarcodesResult[0].StatusName;
+                                    statuses = status.GetStatusesByParcelBarcodesResult;
+                                    orderStatus.innerHTML = statusString;
 
-                                    debugger;
+
                                 }
                             });
                             var authHeader = "Basic " + bstring;
@@ -55,18 +55,17 @@ form.addEventListener('submit', function(ev) {
                             xhr.setRequestHeader("Content-Type", "application/json");
                             xhr.setRequestHeader("Authorization", authHeader);
                             xhr.send(data);
-                            status.innerHTML = statusString
                             custName.innerHTML = row[3];
                             orderDate.innerHTML = row[2];
-                            for (var i = 0; i < statuses.values.length; i++) {
-
-
-
-
-
+                            for (var i = 0; i < statuses.length; i++) {
+                                tbody.innerHTML +=
+                                    `
+                                    <tr>
+                                    <td>${statuses[i].StatusName}</td>
+                                    <td>${statuses[i].StatusTimestamp}</td>
+                                    </tr>
+                                    `;
                             }
-
-
                             break;
                         } else {
                             continue;
