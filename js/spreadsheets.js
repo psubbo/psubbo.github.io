@@ -4,6 +4,15 @@ var button = document.querySelector('.btn')
 var range = "A2:E";
 var tbody = document.querySelector(".tbody");
 var apiUrl = "https://sheets.googleapis.com/v4/spreadsheets/" + spreadsheetID + "/values/" + range + "?key=" + API_KEY;
+var statuses = [];
+var bstring = sessionStorage.bstring;
+
+
+// Делаем запрос в API Hermes
+
+
+
+
 
 function drawTable() {
     fetch(apiUrl)
@@ -19,7 +28,42 @@ function drawTable() {
                     //console.log(data.values); // выводим содержимое таблицы в консоль
                     for (var i = 0; i < data.values.length; i++) {
                         var row = data.values[i];
-                        // row = ['Страна', 'Столица']
+                        var status;
+                        var trackCode = [row[2]];
+                        var params = {
+                            method: 'POST',
+                            timeout: 60000,
+                            body: {
+                                "parcelBarCodes": trackArr,
+                            },
+                            headers: {
+                                "Authorization": "Basic " + bstring,
+                                "Content-Type": "application/json"
+                            },
+                        };
+                        console.log(params);
+                        debugger;
+
+
+
+
+                        fetch('https://api.hermes-dpd.ru/ws/restservice.svc/rest/GetStatusesByParcelBarcodes', params)
+                            .then(
+                                function(response) {
+                                    if (response.status !== 200) {
+                                        console.log('Huston we have a problem. Status Code: ' +
+                                            response.status);
+                                        return;
+                                    } else {
+
+                                    }
+
+                                }
+                            )
+
+
+
+
 
                         tbody.innerHTML += `
                      <tr>
@@ -29,6 +73,7 @@ function drawTable() {
                        <td>${row[2]}</td>
                        <td>${row[3]}</td>
                        <td>${row[4]}</td>
+                       <td>${status}</td>
                      </tr>
                    `;
                     }
