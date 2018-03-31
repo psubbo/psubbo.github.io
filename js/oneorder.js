@@ -11,8 +11,6 @@ form.addEventListener('submit', function(ev) {
     ev.preventDefault();
     var order = document.searchForm.search.value;
 
-
-
     debugger;
 
     fetch(apiUrl)
