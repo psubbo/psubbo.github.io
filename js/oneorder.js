@@ -37,6 +37,8 @@ form.addEventListener('submit', function(ev) {
                         var statuses;
                         var data = "{\r\n\t\"parcelBarCodes\":[" + trackCode + "],\r\n}";
                         if (order == orderNumber) {
+                            tbody.innerHTML = ""
+
                             resultTable.classList.remove("invisible");
 
 
@@ -58,14 +60,22 @@ form.addEventListener('submit', function(ev) {
                             xhr.setRequestHeader("Authorization", authHeader);
                             xhr.send(data);
 
+
+
                             custName.innerHTML = row[3];
                             orderDate.innerHTML = row[2];
                             for (var i = 0; i < statuses.length; i++) {
+                                var d = parseInt(statuses[i].StatusTimestamp.slice(6, 19))
+                                var date = new Date(d);
+                                var month = date.getMonth() + 1;
+                                if (month < 10) { month = "0" + month }
+                                var dateString = date.getDate() + '/' + month + '/' + date.getFullYear(); + ' ' + date.getHours() + ' ' + date.getMinutes();
+                                console.log(dateString);
                                 tbody.innerHTML +=
                                     `
                                     <tr>
                                     <td>${statuses[i].StatusName}</td>
-                                    <td>${statuses[i].StatusTimestamp}</td>
+                                    <td>${dateString}</td>
                                     </tr>
                                     `;
                             }
