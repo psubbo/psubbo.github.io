@@ -7,12 +7,12 @@ var apiUrl = "https://sheets.googleapis.com/v4/spreadsheets/" + spreadsheetID + 
 var bstring = sessionStorage.bstring;
 var form = document.querySelector('.searchForm');
 var tbody = document.querySelector(".tbody");
+var resultTable = document.querySelector('.resultTable');
 var orderStatus = document.querySelector('.orderStatus');
 var custName = document.querySelector('.custName');
 var orderDate = document.querySelector('.orderDate');
-var resultTable = document.querySelector('.resultTable');
-
-
+var number = document.querySelector('.number');
+var orderCity = document.querySelector('.orderCity');
 
 form.addEventListener('submit', function(ev) {
     ev.preventDefault();
@@ -28,6 +28,7 @@ form.addEventListener('submit', function(ev) {
                 }
 
                 response.json().then(function(a) {
+
 
                     for (var i = 0; i < a.values.length; i++) {
                         var row = a.values[i];
@@ -60,16 +61,20 @@ form.addEventListener('submit', function(ev) {
                             xhr.setRequestHeader("Authorization", authHeader);
                             xhr.send(data);
 
-
-
+                            orderCity.innerHTML = row[4];
+                            number.innerHTML = row[0]
                             custName.innerHTML = row[3];
                             orderDate.innerHTML = row[2];
                             for (var i = 0; i < statuses.length; i++) {
                                 var d = parseInt(statuses[i].StatusTimestamp.slice(6, 19))
                                 var date = new Date(d);
                                 var month = date.getMonth() + 1;
-                                if (month < 10) { month = "0" + month }
-                                var dateString = date.getDate() + '/' + month + '/' + date.getFullYear() + ' ' + date.getHours() + ' ' + date.getMinutes();
+                                var hours = date.getHours();
+                                var minutes = date.getMinutes();
+                                if (month < 10) { month = "0" + month };
+                                if (hours < 10) { hours = "0" + hours };
+                                if (minutes < 10) { minutes = "0" + minutes };
+                                var dateString = date.getDate() + '/' + month + '/' + date.getFullYear() + ' ' + hours + ':' + minutes;
                                 tbody.innerHTML +=
                                     `
                                     <tr>
