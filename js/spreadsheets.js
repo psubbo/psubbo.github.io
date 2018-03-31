@@ -5,8 +5,7 @@ var range = "A2:E";
 var tbody = document.querySelector(".tbody");
 var apiUrl = "https://sheets.googleapis.com/v4/spreadsheets/" + spreadsheetID + "/values/" + range + "?key=" + API_KEY;
 
-button.addEventListener('submit', function(ev) {
-    ev.preventDefault();
+function drawTable() {
     fetch(apiUrl)
         .then(
             function(response) {
@@ -41,4 +40,4 @@ button.addEventListener('submit', function(ev) {
             console.log('Fetch Error :-S', err);
         });
 
-});
+};
