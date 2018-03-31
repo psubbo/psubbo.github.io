@@ -29,7 +29,7 @@ function drawTable() {
                     for (var i = 0; i < data.values.length; i++) {
                         var row = data.values[i];
                         var status;
-                        var trackCode = [row[2]];
+                        var trackCode = [row[1]];
                         var params = {
                             method: 'POST',
                             timeout: 60000,
@@ -41,29 +41,19 @@ function drawTable() {
                                 "Content-Type": "application/json"
                             },
                         };
-                        console.log(params);
-                        debugger;
-
-
-
 
                         fetch('https://api.hermes-dpd.ru/ws/restservice.svc/rest/GetStatusesByParcelBarcodes', params)
-                            .then(
-                                function(response) {
-                                    if (response.status !== 200) {
-                                        console.log('Huston we have a problem. Status Code: ' +
-                                            response.status);
-                                        return;
-                                    } else {
+                            .then(function(response) {
+                                console.log(response.headers.get('Content-Type'));
+                                console.log(response.headers.get('Date'));
 
-                                    }
-
-                                }
-                            )
-
-
-
-
+                                console.log(response.status);
+                                console.log(response.statusText);
+                                console.log(response.type);
+                                console.log(response.url);
+                                console.log(response.Statuses);
+                                debugger;
+                            });
 
                         tbody.innerHTML += `
                      <tr>
