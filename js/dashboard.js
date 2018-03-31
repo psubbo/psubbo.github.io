@@ -7,7 +7,7 @@ var apiUrl = "https://sheets.googleapis.com/v4/spreadsheets/" + spreadsheetID + 
 var bstring = sessionStorage.bstring;
 
 
-// Делаем запрос в API Hermes
+
 
 function drawTable() {
     fetch(apiUrl)
@@ -34,7 +34,6 @@ function drawTable() {
                             if (this.readyState === 4) {
                                 var status = JSON.parse(this.responseText);
                                 statusString = status.GetStatusesByParcelBarcodesResult[0].StatusName
-                                debugger;
                             }
                         });
                         var authHeader = "Basic " + bstring;
