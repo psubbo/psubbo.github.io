@@ -10,7 +10,7 @@ var tbody = document.querySelector(".tbody");
 var orderStatus = document.querySelector('.orderStatus');
 var custName = document.querySelector('.custName');
 var orderDate = document.querySelector('.orderDate');
-
+var resultTable = document.querySelector('.resultTable');
 
 
 
@@ -37,6 +37,8 @@ form.addEventListener('submit', function(ev) {
                         var statuses;
                         var data = "{\r\n\t\"parcelBarCodes\":[" + trackCode + "],\r\n}";
                         if (order == orderNumber) {
+                            resultTable.classList.remove("invisible");
+
 
                             var xhr = new XMLHttpRequest();
 
