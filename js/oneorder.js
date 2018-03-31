@@ -51,8 +51,6 @@ form.addEventListener('submit', function(ev) {
                                     statusString = status.GetStatusesByParcelBarcodesResult[0].StatusName;
                                     statuses = status.GetStatusesByParcelBarcodesResult;
                                     orderStatus.innerHTML = statusString;
-
-
                                 }
                             });
                             var authHeader = "Basic " + bstring;
@@ -61,10 +59,11 @@ form.addEventListener('submit', function(ev) {
                             xhr.setRequestHeader("Authorization", authHeader);
                             xhr.send(data);
 
-                            orderCity.innerHTML = row[4];
-                            number.innerHTML = row[0]
-                            custName.innerHTML = row[3];
+                            number.innerHTML = row[0];
                             orderDate.innerHTML = row[2];
+                            custName.innerHTML = row[3];
+                            orderCity.innerHTML = row[4];
+
                             for (var i = 0; i < statuses.length; i++) {
                                 var d = parseInt(statuses[i].StatusTimestamp.slice(6, 19))
                                 var date = new Date(d);
