@@ -1,12 +1,44 @@
 var API_KEY = "AIzaSyAnncvWgiQITGBVFd9W-zY3_GvVZDJ16fc";
 var spreadsheetID = "1YCzTTvcecJdOvhLYZ-J6iCzpLBmffIHXSgaijVkPfq8";
-var range = "A1:C7";
+var rowsNumber
+var range = "A2:E";
+var tbody = document.querySelector(".tbody");
+
+console.log(tbody);
+debugger;
+
+
 var apiUrl = "https://sheets.googleapis.com/v4/spreadsheets/" + spreadsheetID + "/values/" + range + "?key=" + API_KEY;
-
-/* console.log(apiUrl); */
-
 fetch(apiUrl)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data.values);
+    .then(
+        function(response) {
+            if (response.status !== 200) {
+                console.log('Looks like there was a problem. Status Code: ' +
+                    response.status);
+                return;
+            }
+            // Examine the text in the response  
+            response.json().then(function(data) {
+                //console.log(data.values); // выводим содержимое таблицы в консоль
+                for (var i = 0; i < data.values.length; i++) {
+                    var row = data.values[i];
+                    // row = ['Страна', 'Столица']
+
+                    tbody.innerHTML += `
+                     <tr>
+                       <td>${i}</td>
+                       <td>${row[0]}</td>
+                       <td>${row[1]}</td>
+                       <td>${row[2]}</td>
+                       <td>${row[3]}</td>
+                       <td>${row[4]}</td>
+                     </tr>
+                   `;
+                }
+
+            });
+        }
+    )
+    .catch(function(err) {
+        console.log('Fetch Error :-S', err);
     });
