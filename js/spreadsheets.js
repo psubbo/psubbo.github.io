@@ -4,10 +4,6 @@ var rowsNumber
 var range = "A2:E";
 var tbody = document.querySelector(".tbody");
 
-console.log(tbody);
-debugger;
-
-
 var apiUrl = "https://sheets.googleapis.com/v4/spreadsheets/" + spreadsheetID + "/values/" + range + "?key=" + API_KEY;
 fetch(apiUrl)
     .then(
@@ -34,6 +30,7 @@ fetch(apiUrl)
                        <td>${row[4]}</td>
                      </tr>
                    `;
+                    debugger;
                 }
 
             });
