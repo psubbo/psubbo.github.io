@@ -4,15 +4,10 @@ var button = document.querySelector('.btn')
 var range = "A2:E";
 var tbody = document.querySelector(".tbody");
 var apiUrl = "https://sheets.googleapis.com/v4/spreadsheets/" + spreadsheetID + "/values/" + range + "?key=" + API_KEY;
-var statuses = [];
 var bstring = sessionStorage.bstring;
 
 
 // Делаем запрос в API Hermes
-
-
-
-
 
 function drawTable() {
     fetch(apiUrl)
@@ -24,36 +19,32 @@ function drawTable() {
                     return;
                 }
                 // Examine the text in the response  
-                response.json().then(function(data) {
+                response.json().then(function(a) {
                     //console.log(data.values); // выводим содержимое таблицы в консоль
-                    for (var i = 0; i < data.values.length; i++) {
-                        var row = data.values[i];
-                        var status;
+
+
+                    for (var i = 0; i < a.values.length; i++) {
+                        var row = a.values[i];
                         var trackCode = [row[1]];
-                        var params = {
-                            method: 'POST',
-                            timeout: 60000,
-                            body: {
-                                "parcelBarCodes": trackCode,
-                            },
-                            headers: {
-                                "Authorization": "Basic " + bstring,
-                                "Content-Type": "application/json"
-                            },
-                        };
+                        var data = "{\r\n\t\"parcelBarCodes\":[" + trackCode + "],\r\n}";
+                        var statusString;
+                        var xhr = new XMLHttpRequest();
 
-                        fetch('https://api.hermes-dpd.ru/ws/restservice.svc/rest/GetStatusesByParcelBarcodes', params)
-                            .then(function(response) {
-                                console.log(response.headers.get('Content-Type'));
-                                console.log(response.headers.get('Date'));
-
-                                console.log(response.status);
-                                console.log(response.statusText);
-                                console.log(response.type);
-                                console.log(response.url);
-                                console.log(response.Statuses);
+                        xhr.addEventListener("readystatechange", function() {
+                            if (this.readyState === 4) {
+                                var status = JSON.parse(this.responseText);
+                                statusString = status.GetStatusesByParcelBarcodesResult[0].StatusName
                                 debugger;
-                            });
+                            }
+                        });
+                        var authHeader = "Basic " + bstring;
+                        xhr.open("POST", "https://api.hermes-dpd.ru/ws/restservice.svc/rest/GetStatusesByParcelBarcodes", false);
+                        xhr.setRequestHeader("Content-Type", "application/json");
+                        xhr.setRequestHeader("Authorization", authHeader);
+
+
+
+                        xhr.send(data);
 
                         tbody.innerHTML += `
                      <tr>
@@ -63,7 +54,7 @@ function drawTable() {
                        <td>${row[2]}</td>
                        <td>${row[3]}</td>
                        <td>${row[4]}</td>
-                       <td>${status}</td>
+                       <td>${statusString}</td>
                      </tr>
                    `;
                     }
