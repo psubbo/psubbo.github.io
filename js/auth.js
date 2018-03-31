@@ -56,7 +56,7 @@ form.addEventListener('submit', function(ev) {
                 function(response) {
                     if (response.status !== 200) {
 
-                        // Если статус не 200 - паникуем, красим все в красный и говорим что все пропало в консоль и в сообщении в форме
+                        // Если статус не 200 - паникуем, красим все в красный и говорим, что все пропало в консоль и в сообщении в форме.
 
                         console.log('Huston we have a problem. Status Code: ' +
                             response.status);
@@ -69,7 +69,7 @@ form.addEventListener('submit', function(ev) {
                         return;
                     } else {
 
-                        // Если все хорошо - пускаем в админку
+                        // Если все хорошо - переходим в админку
 
                         window.location.assign("https://psubbo.github.io/dashboard.html");
                     }

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/style.css">
     <link href="https://www.decathlon.ru/ecru/static/footer/img/logo_de.png" sizes="40x40" type="image/png" rel="icon">
-    <title>Tracking app - Dashboard</title>
+    <title>Hermes API app - Map</title>
 </head>
 
 <body>
@@ -30,18 +30,17 @@
     </header>
     <main>
         <div class="resultTable">
-            <h1>Карта с заказами:</h1>
+            <h1>Карта пунктов выдачи заказов Hermes:</h1>
 
             <div id="map" style="width: 800px; height: 600px"></div>
             <script type="text/javascript">
                 ymaps.ready(init);
-                var myMap,
-                    myPlacemark;
+                var myMap, myPlacemark;
 
                 function init() {
                     myMap = new ymaps.Map("map", {
                         center: [55.913021, 37.577787],
-                        zoom: 10
+                        zoom: 4
                     });
 
                     myPlacemark = new ymaps.Placemark([55.913021, 37.577787], {
