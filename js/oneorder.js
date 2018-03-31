@@ -10,16 +10,26 @@ fetch(apiUrl)
     .then(
         function(response) {
             if (response.status !== 200) {
-                console.log('Looks like there was a problem. Status Code: ' +
+                console.log('Unable to fetch Google Spreadsheets. Status Code: ' +
                     response.status);
                 return;
             }
-            // Examine the text in the response  
+
             response.json().then(function(a) {
-                //console.log(data.values); // выводим содержимое таблицы в консоль
+
                 for (var i = 0; i < a.values.length; i++) {
                     var row = a.values[i];
-                    var trackCode = [row[1]];
+                    var orderNumber = row[0];
+                    var trackCode = row[1];
+                    var shippingDate = row[2];
+                    var custName = row[3];
+                    var deliveryCity = row[4];
+                    debugger;
+
+
+
+
+
                     var data = "{\r\n\t\"parcelBarCodes\":[" + trackCode + "],\r\n}";
                     var statusString;
                     var xhr = new XMLHttpRequest();
