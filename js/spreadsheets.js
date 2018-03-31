@@ -34,7 +34,7 @@ function drawTable() {
                             method: 'POST',
                             timeout: 60000,
                             body: {
-                                "parcelBarCodes": trackArr,
+                                "parcelBarCodes": trackCode,
                             },
                             headers: {
                                 "Authorization": "Basic " + bstring,
