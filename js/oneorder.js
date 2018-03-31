@@ -13,10 +13,6 @@ var orderDate = document.querySelector('.orderDate');
 
 
 
-
-
-
-
 form.addEventListener('submit', function(ev) {
     ev.preventDefault();
     var order = document.form.search.value;
@@ -77,8 +73,6 @@ form.addEventListener('submit', function(ev) {
                         }
 
                     }
-
-
 
                 });
             }
