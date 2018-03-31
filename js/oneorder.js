@@ -69,8 +69,7 @@ form.addEventListener('submit', function(ev) {
                                 var date = new Date(d);
                                 var month = date.getMonth() + 1;
                                 if (month < 10) { month = "0" + month }
-                                var dateString = date.getDate() + '/' + month + '/' + date.getFullYear(); + ' ' + date.getHours() + ' ' + date.getMinutes();
-                                console.log(dateString);
+                                var dateString = date.getDate() + '/' + month + '/' + date.getFullYear() + ' ' + date.getHours() + ' ' + date.getMinutes();
                                 tbody.innerHTML +=
                                     `
                                     <tr>
