@@ -22,7 +22,7 @@ fetch(apiUrl)
 
                     tbody.innerHTML += `
                      <tr>
-                       <td>${i}</td>
+                       <td>${i+1}</td>
                        <td>${row[0]}</td>
                        <td>${row[1]}</td>
                        <td>${row[2]}</td>
