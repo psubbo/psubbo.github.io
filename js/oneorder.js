@@ -4,7 +4,7 @@ var button = document.querySelector('.btn')
 var range = "A2:E";
 var tbody = document.querySelector(".tbody");
 var apiUrl = "https://sheets.googleapis.com/v4/spreadsheets/" + spreadsheetID + "/values/" + range + "?key=" + API_KEY;
-var bstring = sessionStorage.bstring;
+var bstring = localStorage.bstring;
 var form = document.querySelector('.searchForm');
 var tbody = document.querySelector(".tbody");
 var resultTable = document.querySelector('.resultTable');

@@ -30,10 +30,10 @@ form.addEventListener('submit', function(ev) {
         loginInput.classList.remove('has-error');
         passwordInput.classList.remove('has-error');
 
-        // Если все поля заполнены то кодируем их содержание в base64 и сохраняем на время сессии в sessionStorage
+        // Если все поля заполнены то кодируем их содержание в base64 и сохраняем на время сессии в localStorage
 
         var bstring = btoa(login + ":" + password);
-        sessionStorage.bstring = bstring;
+        localStorage.bstring = bstring;
 
         // Готовим параметры запроса в апи Hermes - для авторизации используем пустой запрос на метод GetStatusesByParcelBarcodes если вернет код 200 - значит корректно введены данные логина и пароля, если что то другое - значит не срослось. 
 

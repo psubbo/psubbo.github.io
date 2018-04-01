@@ -17,7 +17,7 @@
     <header>
         <div class="logo">
             <a href="#"><img src="img/Decathlon_Logo.png" alt="Decathlon" width="150px"></a>
-            <p>Tracking App</p>
+            <p>Hermes API - Map</p>
             <nav>
                 <ul class="nav nav-tabs" role="tablist">
                     <li><a href="dashboard.html">Dashboard</a></li>
@@ -33,24 +33,7 @@
             <h1>Карта пунктов выдачи заказов Hermes:</h1>
 
             <div id="map" style="width: 800px; height: 600px"></div>
-            <script type="text/javascript">
-                ymaps.ready(init);
-                var myMap, myPlacemark;
 
-                function init() {
-                    myMap = new ymaps.Map("map", {
-                        center: [55.913021, 37.577787],
-                        zoom: 4
-                    });
-
-                    myPlacemark = new ymaps.Placemark([55.913021, 37.577787], {
-                        hintContent: 'Декатлон Алтуфьево',
-                        balloonContent: 'Декатлон Алтуфьево'
-                    });
-
-                    myMap.geoObjects.add(myPlacemark);
-                }
-            </script>
         </div>
     </main>
 </body>
