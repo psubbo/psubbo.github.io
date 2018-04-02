@@ -1,5 +1,5 @@
     var bstring = localStorage.bstring;
-    var parcelShops;
+    var parcelShops, myMap;
 
 
     //Почему fetch не работает а XMLHttpRequest() работает? ЧЯДНТ?
@@ -41,10 +41,6 @@
 
         xhr.send(data);
     };
-    updateParcelShops(bstring);
-
-    ymaps.ready(init);
-    var myMap;
 
     function init() {
         myMap = new ymaps.Map("map", {
@@ -78,3 +74,7 @@
         /*         myClusterer.options.set("iconColor", "#000"); */
         myMap.geoObjects.add(myClusterer);
     };
+
+    updateParcelShops(bstring);
+
+    ymaps.ready(init);
