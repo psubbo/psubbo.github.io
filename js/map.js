@@ -35,7 +35,6 @@
         xhr.addEventListener("readystatechange", function() {
 
             if (this.readyState === 4) {
-
                 parcelShops = JSON.parse(this.responseText).GetParcelShopsResult;
             };
         });
@@ -64,7 +63,7 @@
                 },
                 properties: {
                     clusterCaption: parcelShops[i].ParcelShopName,
-                    balloonContentBody: parcelShops[i].ExtraParams[0].Value,
+                    balloonContentBody: "<b>" + parcelShops[i].ParcelShopName + "</b><br><br>" + "<b>Как нас найти:</b><br>" + parcelShops[i].ExtraParams[0].Value + "<br> <a href='" + parcelShops[i].AddressUrl + "'>Подробнее</a>",
                     services: parcelShops[i].Services
                 }
             });
