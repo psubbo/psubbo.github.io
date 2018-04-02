@@ -53,16 +53,26 @@
             zoom: 4,
             controls: ['zoomControl', 'searchControl']
         });
+        var myGeoObjects = [];
 
         for (var i = 0; i < parcelShops.length; i++) {
 
-            var a, b;
-            var myPlacemark = new ymaps.Placemark([parcelShops[i].Latitude, parcelShops[i].Longitude], {
-                hintContent: parcelShops[i].ParcelShopName,
-                balloonContent: parcelShops[i].ExtraParams[0].Value,
-                services: parcelShops[i].Services
-
+            myGeoObjects[i] = new ymaps.GeoObject({
+                geometry: {
+                    type: "Point",
+                    coordinates: [parcelShops[i].Latitude, parcelShops[i].Longitude]
+                },
+                properties: {
+                    clusterCaption: parcelShops[i].ParcelShopName,
+                    balloonContentBody: parcelShops[i].ExtraParams[0].Value,
+                    services: parcelShops[i].Services
+                }
             });
-            myMap.geoObjects.add(myPlacemark);
-        };
-    }
+        }
+
+        var myClusterer = new ymaps.Clusterer({ clusterDisableClickZoom: false });
+        myClusterer.add(myGeoObjects);
+        myMap.geoObjects.add(myClusterer);
+
+
+    };
