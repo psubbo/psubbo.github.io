@@ -63,7 +63,10 @@
                 },
                 properties: {
                     clusterCaption: parcelShops[i].ParcelShopName,
-                    balloonContentBody: "<b>" + parcelShops[i].ParcelShopName + "</b><br><br>" + "<b>Как нас найти:</b><br>" + parcelShops[i].ExtraParams[0].Value + "<br> <a href='" + parcelShops[i].AddressUrl + "'>Подробнее</a>",
+                    hintContent: parcelShops[i].ParcelShopName,
+                    balloonContentHeader: parcelShops[i].ParcelShopName,
+                    balloonContentBody: "<b>Как нас найти:</b><br>" + parcelShops[i].ExtraParams[0].Value + "<br>",
+                    balloonContentFooter: "<a href='" + parcelShops[i].AddressUrl + "'>Подробнее</a>",
                     services: parcelShops[i].Services
                 }
             });
@@ -71,7 +74,7 @@
 
         var myClusterer = new ymaps.Clusterer({ clusterDisableClickZoom: false });
         myClusterer.add(myGeoObjects);
+        myClusterer.options.set('iconColor', '#000');
         myMap.geoObjects.add(myClusterer);
-
-
+        //Как указать цвет меток для кластера
     };
