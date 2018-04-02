@@ -74,7 +74,7 @@
 
         var myClusterer = new ymaps.Clusterer({ clusterDisableClickZoom: false });
         myClusterer.add(myGeoObjects);
-        myClusterer.options.set('iconColor', '#000');
+        //Как указать цвет меток для кластера почему вот это не работает???
+        /*         myClusterer.options.set("iconColor", "#000"); */
         myMap.geoObjects.add(myClusterer);
-        //Как указать цвет меток для кластера
     };
