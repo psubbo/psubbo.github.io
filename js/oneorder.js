@@ -1,3 +1,5 @@
+//Объявляем все что нужно;
+
 var API_KEY = "AIzaSyAnncvWgiQITGBVFd9W-zY3_GvVZDJ16fc";
 var spreadsheetID = "1YCzTTvcecJdOvhLYZ-J6iCzpLBmffIHXSgaijVkPfq8";
 var button = document.querySelector('.btn')
@@ -14,9 +16,13 @@ var orderDate = document.querySelector('.orderDate');
 var number = document.querySelector('.number');
 var orderCity = document.querySelector('.orderCity');
 
+//Слушаем клик по кнопке;
+
 form.addEventListener('submit', function(ev) {
     ev.preventDefault();
     var order = document.searchForm.search.value;
+
+    //Функция запроса к гугл докс, чтобы получить детали заказа;
 
     fetch(apiUrl)
         .then(
@@ -40,8 +46,11 @@ form.addEventListener('submit', function(ev) {
                         if (order == orderNumber) {
                             tbody.innerHTML = ""
 
+                            //Делаем таблицу видимой
+
                             resultTable.classList.remove("invisible");
 
+                            //Запрос в Hermes для получения статуса этого заказа
 
                             var xhr = new XMLHttpRequest();
 
@@ -59,10 +68,14 @@ form.addEventListener('submit', function(ev) {
                             xhr.setRequestHeader("Authorization", authHeader);
                             xhr.send(data);
 
+                            //Размещаем данные из гуглдоков
+
                             number.innerHTML = row[0];
                             orderDate.innerHTML = row[2];
                             custName.innerHTML = row[3];
                             orderCity.innerHTML = row[4];
+
+                            //Преобразуем дату в норальный формат из формата UTC
 
                             for (var i = 0; i < statuses.length; i++) {
                                 var d = parseInt(statuses[i].StatusTimestamp.slice(6, 19))
@@ -74,6 +87,9 @@ form.addEventListener('submit', function(ev) {
                                 if (hours < 10) { hours = "0" + hours };
                                 if (minutes < 10) { minutes = "0" + minutes };
                                 var dateString = date.getDate() + '/' + month + '/' + date.getFullYear() + ' ' + hours + ':' + minutes;
+
+                                //Формируем таблицу истории статусов
+
                                 tbody.innerHTML +=
                                     `
                                     <tr>
