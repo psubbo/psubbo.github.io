@@ -1,7 +1,6 @@
 //Объявляем все что нужно;
 
-var API_KEY = "AIzaSyAnncvWgiQITGBVFd9W-zY3_GvVZDJ16fc";
-var spreadsheetID = "1YCzTTvcecJdOvhLYZ-J6iCzpLBmffIHXSgaijVkPfq8";
+
 var button = document.querySelector('.btn')
 var range = "A2:E";
 var tbody = document.querySelector(".tbody");
